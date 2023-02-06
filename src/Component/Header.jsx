@@ -2,8 +2,10 @@ import React,{useState,useEffect} from 'react'
 import '../styles/Header.css'
 import {onAuthStateChanged,signOut} from 'firebase/auth'
 import { db, auth } from '../firebase'
+import { useNavigate } from 'react-router-dom'
 function Header() {
-  const [user,setUser ] = useState('')
+  const navigate = useNavigate()
+  const [user,setUser] = useState('')
   useEffect(() => {
       onAuthStateChanged(auth , CurrentUser => {  
         setUser(CurrentUser)
@@ -11,13 +13,17 @@ function Header() {
        },[])
        const logOut = async () => {
         await signOut(auth)
-        window.location = '/'
+        navigate('/')
        }
   return (
-    <div class='logo'>Chat App 
-   {' '} <span>{user?.email}</span>
-   <button onClick={logOut}>Sign Out</button>
-    </div>
+    <div class='header'>
+      <div class='logo'>Chat App </div>
+      <div>
+  <span class='userEmail'>{user?.displayName}</span>{' '}
+   {user && <button onClick={logOut} class='sign-out'>Sign Out</button>}
+    
+   </div>
+   </div>
   )
 }
 

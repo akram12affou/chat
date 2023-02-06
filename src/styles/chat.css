@@ -1,0 +1,23 @@
+.chat{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    /* background-color: #ee8888;
+    font-size: 100px; */
+}
+.conv{
+    border: 1px solid black;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: flex-start;
+    width:65vw;
+    height: 80vh;
+    overflow: scroll;
+
+}
+.message{
+    align-self: flex-end;
+}

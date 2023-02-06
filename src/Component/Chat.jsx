@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react'
 import {onAuthStateChanged} from 'firebase/auth'
 import { db, auth } from '../firebase'
 import { useParams } from 'react-router-dom'
-
+import '../styles/chat.css'
 import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
 import { async } from '@firebase/util'
 function Chat() {
@@ -25,12 +25,13 @@ function Chat() {
           {...data.data() , id : data.id}
         )))
       }
+
       useEffect(( ) => {
         getmessages()
       },[])
-      useEffect(( ) => {
-        getmessages()
-      },[messageRef])
+      // useEffect(( ) => {
+      //   getmessages()
+      // },[messageRef])
       console.log(messages)
       const handleSend =async () => {
         let mes = message
@@ -66,19 +67,20 @@ function Chat() {
          await deleteDoc(doc(db,'conv',id))  
       }
   return (
-    <div>
+    <div class='chat'>
         <h1>Welcome to room '{room}'</h1>
+        <div class='conv' >
            {messages.map((e,i) => {
              return(
-                <>
+                <div class={e.email==user?.email && 'message'}>
                   {e.message}
                   {' '}
                   {e.email}{e.email==user?.email && <button onClick={() => handleDelete(e.id,i)}>X</button>}
-                  <hr />
-                  
-                </>
+                  <br />
+                </div>
              )
            })}
+           </div>
            <br />
            <input type="text" value={message} onChange={e => setMessage(e.target.value)}/><button onClick={handleSend}>SEND</button>
     </div>

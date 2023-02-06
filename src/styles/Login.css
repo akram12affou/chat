@@ -1,3 +1,24 @@
-/* div{
-    background: #bf7575;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    justify-content: center;
+    gap:3px;
+}
+.login-button{
+    padding: 5px;
+    background-color: #ffbf60;
+    border:black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.p-cases{
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}

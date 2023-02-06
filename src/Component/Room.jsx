@@ -11,10 +11,9 @@ export default function Room() {
           setUser(CurrentUser)
         })
          },[])
-         
+         console.log(user.displayName)
     return (
     <div class='room'>
-        {user.email}
         <h1>Enter room name</h1>
         <input value={room} onChange={e => setRoom(e.target.value)} type="text" />
         <Link to={`/chat/` + room }><button>Acces</button></Link>
