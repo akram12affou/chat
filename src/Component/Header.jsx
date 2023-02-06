@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import '../styles/Header.css'
-import {onAuthStateChanged} from 'firebase/auth'
+import {onAuthStateChanged,signOut} from 'firebase/auth'
 import { db, auth } from '../firebase'
 function Header() {
   const [user,setUser ] = useState('')
@@ -9,8 +9,15 @@ function Header() {
         setUser(CurrentUser)
       })
        },[])
+       const logOut = async () => {
+        await signOut(auth)
+        window.location = '/'
+       }
   return (
-    <div class='logo'>Chat App {user.email}</div>
+    <div class='logo'>Chat App 
+   {' '} <span>{user?.email}</span>
+   <button onClick={logOut}>Sign Out</button>
+    </div>
   )
 }
 
