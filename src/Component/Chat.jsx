@@ -4,8 +4,9 @@ import {onAuthStateChanged} from 'firebase/auth'
 import { db, auth } from '../firebase'
 import { useParams } from 'react-router-dom'
 import '../styles/chat.css'
-import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getDocs, orderBy, query, where, onSnapshot} from 'firebase/firestore'
 import { async } from '@firebase/util'
+import Messages from './Messages'
 function Chat() {
     const [user,setUser ] = useState('')
   useEffect(() => {
@@ -18,33 +19,34 @@ function Chat() {
     const {room} = useParams()
     console.log(room)
     const messageRef = collection(db , 'conv')
-    const q = query(messageRef,where('room' ,'==', room),orderBy('createdAt'));
-    const getmessages = async () => {
-        const data = await getDocs(q)
-        setMessages(data.docs.map((data) => (
-          {...data.data() , id : data.id}
-        )))
-      }
-
+    const q = query(messageRef,where('room' ,'==', room),orderBy('createdAt')); 
+   
       useEffect(( ) => {
-        getmessages()
+          const unsuscribe = onSnapshot(q, (snapshot) => {
+          let messages = [];
+          snapshot.forEach((doc) => {
+            messages.push({ ...doc.data(), id: doc.id });
+          });
+          setMessages(messages);
+        });
+    
+        return () => unsuscribe();
       },[])
-      // useEffect(( ) => {
-      //   getmessages()
-      // },[messageRef])
       console.log(messages)
       const handleSend =async () => {
         let mes = message
         setMessage('')
         setMessages(prev => {return(
-            [...prev , {message:mes, email:user.email}])
+            [...prev , {message:mes, name:user?.displayName,
+              email:user?.email}])
         }
         )
         await addDoc(messageRef,{ 
             message:mes,
             email:user?.email,
             createdAt : new Date().getTime(),
-            room:room
+            room:room,
+            name:user?.displayName
         })
       }
       const handleDelete =async (id,i) => {
@@ -66,18 +68,14 @@ function Chat() {
         )
          await deleteDoc(doc(db,'conv',id))  
       }
+      
   return (
     <div class='chat'>
         <h1>Welcome to room '{room}'</h1>
         <div class='conv' >
            {messages.map((e,i) => {
              return(
-                <div class={e.email==user?.email && 'message'}>
-                  {e.message}
-                  {' '}
-                  {e.email}{e.email==user?.email && <button onClick={() => handleDelete(e.id,i)}>X</button>}
-                  <br />
-                </div>
+                <Messages e={e} i={i} handleDelete={handleDelete}/>
              )
            })}
            </div>
