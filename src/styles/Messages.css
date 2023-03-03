@@ -1,0 +1,39 @@
+.your-message{
+    width: fit-content;
+    min-width: 80px;
+    background: #0c6178;
+    color:rgb(255, 255, 255);
+    padding:5px;
+    margin: 1px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.message-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.a-message{
+    min-width: 80px;
+    width: fit-content;
+    background: #a18267;
+    color:white;
+    padding:5px;
+    margin: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.name{
+    font-size: 10px;
+}
+.delete-icon{
+    background: inherit;
+    color: rgb(6, 6, 6);
+    border: none;
+    
+    cursor: pointer;
+}
+.message-content{
+    display: flex;
+  
+}

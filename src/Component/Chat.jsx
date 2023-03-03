@@ -72,10 +72,12 @@ function Chat() {
   };
   return (
     <div class="chat">
-      <h1>Welcome to room '{room}'</h1>
+      <h1>Welcome to room <q>{room}</q></h1>
       <div class="conv">
         {messages.map((e, i) => {
-          return <Messages e={e} i={i} handleDelete={handleDelete} />;
+          return (
+          <Messages e={e} i={i} handleDelete={handleDelete} />
+          );
         })}
       </div>
       <br />

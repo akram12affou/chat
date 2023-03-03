@@ -1,22 +1,34 @@
-import React,{useState,useEffect} from 'react'
-import { auth } from '../firebase'
-
-import {onAuthStateChanged} from 'firebase/auth'
-function Messages({e,i,handleDelete}) {
-    const [user,setUser ] = useState('')
-    useEffect(() => {
-        onAuthStateChanged(auth , CurrentUser => {  
-          setUser(CurrentUser)
-        })
-         },[])
+import React, { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import "../styles/Messages.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { onAuthStateChanged } from "firebase/auth";
+function Messages({ e, i, handleDelete }) {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (CurrentUser) => {
+      setUser(CurrentUser);
+    });
+  }, []);
   return (
-    <div><div class={e.email==user?.email && 'message'}>
-    {e.message}
-    {' '}
-    {e.name}{e.email==user?.email && <button onClick={() => handleDelete(e.id,i)}>X</button>}
-    <br />
-  </div></div>
-  )
+    <div class={e.email == user?.email && 'message-container'}>
+      {e.email == user?.email && (
+          <button className="delete-icon" onClick={() => handleDelete(e.id, i)}>
+            <DeleteIcon />
+          </button>
+        )}
+    <div class={e.email == user?.email ? "your-message" : "a-message"}>
+      <div className="name">{e.name}</div>
+      <div className="message-content">
+      
+        {e.message}
+       
+      </div>
+     
+    </div>
+    
+    </div>
+  );
 }
 
-export default Messages
+export default Messages;
