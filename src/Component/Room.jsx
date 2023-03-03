@@ -11,7 +11,6 @@ export default function Room() {
           setUser(CurrentUser)
         })
          },[])
-         console.log(user.displayName)
     return (
     <div class='room'>
         <h1>Enter room name</h1>

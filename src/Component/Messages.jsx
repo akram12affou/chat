@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { db, auth } from '../firebase'
+import { auth } from '../firebase'
 
 import {onAuthStateChanged} from 'firebase/auth'
 function Messages({e,i,handleDelete}) {
