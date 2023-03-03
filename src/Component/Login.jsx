@@ -5,10 +5,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ function Login() {
         await updateProfile(auth.currentUser, { displayName: name }).catch(
           (err) => console.log(err)
         );
-        navigate("/roomnum")
+        navigate("/roomnum");
       } catch (err) {
         console.log(err.message);
       }
@@ -45,59 +45,54 @@ function Login() {
       {!showregister && (
         <>
           <h2>Sign Up</h2>
-          Name :
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label>Email :</label>
+          <label>Email </label>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="text"
           />
-          <label>password :</label>
+          <label>password </label>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
           />
           <button class="login-button" onClick={handleLogin}>
             Login
           </button>
-          <p class="p-cases" onClick={() => setShowregister(true)}>
-            Create an account
-          </p>
+          <div>No Account? <span class="p-cases" onClick={() => setShowregister(true)}>
+           Register
+          </span></div>
+          
         </>
       )}
       {showregister && (
         <>
           <h2>Sign In</h2>
-          Name :
+          Name 
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <label>Email :</label>
+          <label>Email </label>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="text"
           />
-          <label>password :</label>
+          <label>password </label>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
           />
           <button class="login-button" onClick={handleLogin}>
             Sign In
           </button>
-          <p class="p-cases" onClick={() => setShowregister(false)}>
-            I already have an account
-          </p>
+          <div>Have An Account ? <span class="p-cases" onClick={() => setShowregister(false)}>
+           Login
+          </span></div>
         </>
       )}
     </div>

@@ -1,22 +1,36 @@
 .chat{
     display: flex;
-    /* justify-content: center; */
+    
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    /* background-color: #ee8888;
-    font-size: 100px; */
+   
 }
 .conv{
-    border: 1px solid black;
+    border:2px solid black;
+    border-radius: 3px;
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: flex-start;
-    width:65vw;
+    width:60vw;
     height: 80vh;
-    overflow: scroll;
+    overflow-y: scroll;
 
+}
+.send-form button{
+    padding: 5px;
+    background-color: #748cf8;
+    border:none;
+    border-radius: 5px;
+ 
+    margin: 0 auto;
+    cursor: pointer;
+    font-weight: bolder;
+}
+.send-form {
+   display: flex;
+   gap: 7px;
+   margin-bottom: 10px;
 }
 .message{
     align-self: flex-end;

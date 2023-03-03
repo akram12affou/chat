@@ -3,4 +3,21 @@
     align-items: center;
     flex-direction: column;
     margin-top: 10vh;
+    gap:1vh
+}
+h1{
+    color :#4b494c;
+}
+input{
+    padding:5px;
+}
+.acces-button{
+    padding: 5px;
+    background-color: #748cf8;
+    border:none;
+    border-radius: 5px;
+ 
+    margin: 0 auto;
+    cursor: pointer;
+    font-weight: bolder;
 }

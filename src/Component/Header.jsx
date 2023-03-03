@@ -18,9 +18,9 @@ function Header() {
   };
   return (
     <div class="header">
-      <div class="logo">Chat App</div>
+      <div class="logo">Fastext</div>
       <div className="user-info">
-        <span class="userName">{user && <><AccountCircleIcon/>{'  '} {user?.displayName}</>}</span>{" "}
+        <span class="userName">{user && <><AccountCircleIcon/> {user?.displayName}</>}</span>{" "}
         {user && (
           <>|
             <button onClick={logOut} class="sign-out">

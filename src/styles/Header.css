@@ -8,7 +8,7 @@
    color:white;
 }
 .logo{
-    margin-left: 3vw;
+    margin-left: 5vw;
 }
 .sign-out{
     
@@ -26,6 +26,7 @@
 .userName{
     font-size: 1rem;
     display: flex;
+    width: 85px;
     justify-content: space-between;
 }
 .user-info{

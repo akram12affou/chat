@@ -79,12 +79,14 @@ function Chat() {
         })}
       </div>
       <br />
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={handleSend}>SEND</button>
+      <div className="send-form">
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button onClick={handleSend}>SEND</button>
+      </div>
     </div>
   );
 }
