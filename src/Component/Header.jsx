@@ -18,7 +18,7 @@ function Header() {
   };
   return (
     <div class="header">
-      <div class="logo">Fas<span>t</span>ext</div>
+      <div class="logo">FAS<span>T</span>EXT</div>
       <div className="user-info">
         <span class="userName">{user && <><AccountCircleIcon/> {user?.displayName}</>}</span>{" "}
         {user && (
