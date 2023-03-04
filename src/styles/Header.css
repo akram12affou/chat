@@ -9,6 +9,11 @@
 }
 .logo{
     margin-left: 5vw;
+    color:#c5dde3;
+}
+.logo span{
+   color:red;
+   font-weight: bolder;
 }
 .sign-out{
     

@@ -37,6 +37,10 @@ function Chat() {
     return () => unsuscribe();
   }, []);
   const handleSend = async () => {
+    if(message==''){
+      alert('message invalid')
+      return;
+    }
     let mes = message;
     setMessage("");
     setMessages((prev) => {
@@ -80,7 +84,6 @@ function Chat() {
           );
         })}
       </div>
-      <br />
       <div className="send-form">
         <input
           type="text"

@@ -3,7 +3,11 @@
     align-items: center;
     flex-direction: column;
     margin-top: 10vh;
-    gap:1vh
+    gap:1vh;
+    
+}
+body{
+    
 }
 h1{
     color :#4b494c;

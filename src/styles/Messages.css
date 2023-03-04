@@ -7,10 +7,14 @@
     margin: 1px;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 5px;
+    max-width: 90%;
 }
+
 .message-container{
     display: flex;
     justify-content: flex-end;
+    
+  
 }
 
 .a-message{

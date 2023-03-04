@@ -19,11 +19,11 @@ function Messages({ e, i, handleDelete }) {
         )}
     <div class={e.email == user?.email ? "your-message" : "a-message"}>
       <div className="name">{e.name}</div>
-      <div className="message-content">
+      <span className="message-content">
       
         {e.message}
        
-      </div>
+      </span>
      
     </div>
     

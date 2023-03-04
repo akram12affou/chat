@@ -9,14 +9,35 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 function Login() {
   const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showregister, setShowregister] = useState(false);
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    onAuthStateChanged(auth, (CurrentUser) => {
+      setUser(CurrentUser);
+    });
+  }, []);
   const handleLogin = async () => {
     if (showregister == false) {
       try {
+
         await signInWithEmailAndPassword(auth, email, password);
+        setEmail("");
+        setPassword("");
+        navigate("/roomnum");
+      } catch (err) {
+        alert(err.message);
+      }
+    } else {
+      try {
+        if(name==''){
+          alert('name null')
+          return;
+        }
+        await createUserWithEmailAndPassword(auth, email, password);
         setEmail("");
         setPassword("");
         await updateProfile(auth.currentUser, { displayName: name }).catch(
@@ -24,24 +45,13 @@ function Login() {
         );
         navigate("/roomnum");
       } catch (err) {
-        console.log(err.message);
-      }
-    } else {
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        setEmail("");
-        setPassword("");
-        await updateProfile(auth.currentUser, { displayName: name }).catch(
-          (err) => console.log(err)
-        );
-        window.location = "/roomnum";
-      } catch (err) {
-        console.log(err.message);
+        alert(err.message);
       }
     }
   };
   return (
     <div class="login">
+      {user?.displayName && <>fr</>}
       {!showregister && (
         <>
           <h2>Sign Up</h2>

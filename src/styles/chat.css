@@ -1,39 +1,62 @@
 .chat{
     display: flex;
-    
+    min-height: 90vh;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
-   
+    border: 1px solid rgb(0, 0, 0);
+    background: 	#D3D3D3;
+   /* background: white; */
 }
+/* width */
+.conv::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  .conv::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px #44c8ec;
+    border-radius: 5px;
+  }
+  
+  /* Handle */
+  .conv::-webkit-scrollbar-thumb {
+    background: #301a43;
+    border-radius: 10px;
+  }
 .conv{
-    border:2px solid black;
+    border:1px dotted rgb(58, 58, 58);
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     /* align-items: flex-start; */
     width:60vw;
-    height: 80vh;
+    height: 75vh;
     overflow-y: scroll;
-
+    overflow-x: hidden;
 }
 q{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .send-form button{
     padding: 5px;
-    background-color: #748cf8;
+    background-color: #44c8ec;
     border:none;
     border-radius: 5px;
- 
     margin: 0 auto;
     cursor: pointer;
     font-weight: bolder;
 }
 .send-form {
-   display: flex;
-   gap: 7px;
-   margin-bottom: 10px;
+  
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+   
+}
+.send-form input{
+  
+ width: 50vw;
+ 
 }
 .message{
     align-self: flex-end;
