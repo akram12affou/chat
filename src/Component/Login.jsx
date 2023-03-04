@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
+import { onAuthStateChanged } from "firebase/auth";
+
 import {
   createUserWithEmailAndPassword,
   updateProfile,
@@ -51,8 +53,7 @@ function Login() {
   };
   return (
     <div class="login">
-      {user?.displayName && <>fr</>}
-      {!showregister && (
+      {user?.displayName ? <center>Sign out to change your account</center> : <>   {!showregister && (
         <>
           <h2>Sign Up</h2>
           <label>Email </label>
@@ -104,7 +105,8 @@ function Login() {
            Login
           </span></div>
         </>
-      )}
+      )}</>}
+   
     </div>
   );
 }

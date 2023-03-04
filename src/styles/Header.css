@@ -10,10 +10,16 @@
 .logo{
     margin-left: 5vw;
     color:#c5dde3;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
+
 .logo span{
    color:red;
    font-weight: bolder;
+}
+.logo:hover{
+    letter-spacing: 1px;
 }
 .sign-out{
     

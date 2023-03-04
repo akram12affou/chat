@@ -15,7 +15,7 @@ export default function Room() {
     <div class='room'>
         <h1>Enter room name</h1>
         <input value={room} onChange={e => setRoom(e.target.value)} type="text" />
-        <Link to={`/chat/` + room }><button class='acces-button'>Acces</button></Link>
+        <Link to={`/chat/` + room }><button class='acces-button' disabled={room.length == 0}>Acces</button></Link>
     </div>
   )
 }
