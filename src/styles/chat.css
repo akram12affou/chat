@@ -1,10 +1,10 @@
 .chat{
     display: flex;
-    min-height: 90vh;
+    min-height: 95vh;
     flex-direction: column;
     align-items: center;
     border: 1px solid rgb(0, 0, 0);
-    background: 	#D3D3D3;
+
    /* background: white; */
 }
 /* width */
@@ -28,7 +28,6 @@
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
     width:60vw;
     height: 75vh;
     overflow-y: scroll;
@@ -36,6 +35,10 @@
 }
 q{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.chat h1{
+  font-size: 20px;
+  margin: 10px 0px;
 }
 .send-form button{
     padding: 5px;
@@ -47,7 +50,7 @@ q{
     font-weight: bolder;
 }
 .send-form {
-  
+   
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -61,3 +64,14 @@ q{
 .message{
     align-self: flex-end;
 }
+@media (max-width: 768px) {
+  .conv{
+    width:80vw;
+    font-size: 13px;
+    
+}
+.chat h1{
+  font-size: 16px;
+  margin: 10px 0px;
+}
+} 
